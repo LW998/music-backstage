@@ -38,7 +38,6 @@ class SongService extends Service {
             await reqFun()
         }
         const domain = result.req_0.data.sip.find(i => !i.startsWith('http://ws')) || result.req_0.data.sip[0];
-        // const domain = 'http://122.226.161.16/amobile.music.tc.qq.com/'
         const data = {}
         let total = 0;
         result.req_0.data.midurlinfo.forEach((item) => {
@@ -121,7 +120,6 @@ class SongService extends Service {
             id,
             type = '128',
             mediaId = id,
-            // isRedirect = '0'
         } = params
         const typeMap = {
             m4a: {
@@ -201,18 +199,15 @@ class SongService extends Service {
                     }),
                 },
             })
-            if (
-                result.req_0 &&
-                result.req_0.data &&
-                result.req_0.data.midurlinfo.length !== 0
-            ) {
-                purl = result.req_0.data.midurlinfo[0].purl
+            if (result.req_0 && result.req_0.data && result.req_0.data.midurlinfo) {
+                purl = result.req_0.data.midurlinfo[0].purl;
             }
+
             if (domain === '') {
                 domain = result.req_0.data.sip.find(i => !i.startsWith('http://ws')) || result.req_0.data.sip[0];
             }
         }
-        console.log(domain + purl);
+
 
         if (!purl) {
             return {
@@ -221,9 +216,6 @@ class SongService extends Service {
             }
         }
 
-        // if (Number(isRedirect)) {
-        //     return res.redirect(`${domain}${purl}`);
-        // }
 
         cacheData = {
             data: `${domain}${purl}`,

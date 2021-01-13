@@ -70,7 +70,7 @@ class HomeService extends Service {
             n: pageSize, // 一页显示多少条信息
             p: pageNo, // 第几页
             w: key, // 搜索关键词
-            cr: 1, // 不知道这个参数什么意思，但是加上这个参数你会对搜索结果更满意的
+            cr: 1,
             g_tk: 5381,
             t,
         };

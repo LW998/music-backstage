@@ -148,7 +148,6 @@ class SongListService extends Service {
                 pageNo = 1,
                 pageSize = 100,
                 period,
-                // time = moment().format('YYYY-MM-DD'),
                 time = new Date().toLocaleString().formatTime(`{0}-{1}-{2}`),
                 raw,
         } = params;
@@ -171,11 +170,9 @@ class SongListService extends Service {
             case 4:
             case 27:
             case 62:
-                // timeType = 'YYYY-MM-DD'
                 postPeriod = period || new Date().toLocaleString().formatTime(`{0}-{1}-{2}`)
                 break
             default:
-                // timeType = 'YYYY_W'
                 postPeriod = period || new Date().toLocaleString().formatTime(`{0}`) + '_' + MomentOfYear()
         }
 
